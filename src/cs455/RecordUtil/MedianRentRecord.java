@@ -60,7 +60,7 @@ public class MedianRentRecord implements Writable {
         long median = total / 2;
         long sum = 0;
 
-        for (rentMap.Entry<String, Long> entry : rentMap.entrySet()) {
+        for (Map.Entry<String, Long> entry : rentMap.entrySet()) {
             if (sum + entry.getValue() >=  median) {
                 return entry.getKey();
             }
