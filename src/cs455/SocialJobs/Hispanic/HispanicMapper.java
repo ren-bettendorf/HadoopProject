@@ -74,7 +74,7 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
     }
 	
 	private Long parseCompleteAgeGap(String text, int start, int end) {
-		int total = 0;
+		Long total = 0;
 		for(int index = start; index < end; index += 9) {
 			total += Long.parseLong(text.substring(index, index + 9));
 		}
