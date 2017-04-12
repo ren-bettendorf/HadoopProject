@@ -38,11 +38,11 @@ public class HispanicReducer extends Reducer<Text, HispanicRecord, Text, Hispani
         record.setMale0to18(male0to18);
         record.setFemale0to18(female0to18);
         record.setMale19to29(male19to29);
-        recordecord.setFemale19to29(female19to29);
-        recordecord.setMale30to39(male30to39);
-        recordecord.setFemale30to39(female30to39);
-        recordecord.setTotalFemalePopulation(totalFemalePopulation);
-        recordecord.setTotalMalePopulation(totalMalePopulation);
-        context.write(key, recordecord);
+        record.setFemale19to29(female19to29);
+        record.setMale30to39(male30to39);
+        record.setFemale30to39(female30to39);
+        record.setTotalFemalePopulation(totalFemalePopulation);
+        record.setTotalMalePopulation(totalMalePopulation);
+        context.write(key, record);
     }
 }
