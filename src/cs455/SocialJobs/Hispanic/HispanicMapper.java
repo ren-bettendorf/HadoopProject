@@ -24,62 +24,52 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
 
             HispanicRecord record = new HispanicRecord();
 
-            if (!logicalRecordPart.equals(totalParts)) {
-                record.setMaleHispanic0to18(getMaleHispanicBelow18(text));
-                record.setFemaleHispanic0to18(getFemaleHispanicBelow18(text));
+            //if (!logicalRecordPart.equals(totalParts)) {
+                record.setMale0to18(parseMaleBelow18(text));
+                record.setFemale0to18(parseFemaleBelow18(text));
 
-                record.setMaleHispanic19to29(getMaleHispanic19to29(text));
-                record.setFemaleHispanic19to29(getFemaleHispanic19to29(text));
+                record.setMale19to29(parseMale19to29(text));
+                record.setFemale19to29(parseFemale19to29(text));
 
-                record.setMaleHispanic30to39(getMaleHispanic30to39(text));
-                record.setFemaleHispanic30to39(getFemaleHispanic30to39(text));
+                record.setMale30to39(parseMale30to39(text));
+                record.setFemale30to39(parseFemale30to39(text));
 
-                record.setTotalMaleHispanicPopulation(getTotalMalePopulation(text));
-                record.setTotalFemaleHispanicPopulation(getTotalFemalePopulation(text));
+                record.setTotalMalePopulation(parseTotalMalePopulation(text));
+                record.setTotalFemalePopulation(parseTotalFemalePopulation(text));
                 context.write(new Text(state), record);
-            }
+            //}
         }
     }
 
-    public Long getMaleHispanicBelow18(String unparsedText) {
-        return parseText(3864, 3973, unparsedText);
+    public Long parseMaleBelow18(String unparsedText) {
+        return Long.parseLong(text.substring(3864, 3973));
     }
 
-    public Long getFemaleHispanicBelow18(String unparsedText) {
-        return parseText(4143, 4252, unparsedText);
+    public Long parseFemaleBelow18(String text) {
+        return Long.parseLong(text.substring(4143, 4252));
     }
 
-    public Long getMaleHispanic19to29(String unparsedText) {
-        return parseText(3981, 4018, unparsedText);
+    public Long parseMale19to29(String text) {
+        return Long.parseLong(text.substring(3981, 4018));
     }
 
-    public Long getFemaleHispanic19to29(String unparsedText) {
-        return parseText(4260, 4297, unparsedText);
+    public Long parseFemale19to29(String text) {
+        return Long.parseLong(text.substring(4260, 4297));
     }
 
-    public Long getMaleHispanic30to39(String unparsedText) {
-        return parseText(4026, 4036, unparsedText);
+    public Long parseMale30to39(String text) {
+        return Long.parseLong(text.substring(4026, 4036));
     }
 
-    public Long getFemaleHispanic30to39(String unparsedText) {
-        return parseText(4305, 4315, unparsedText);
+    public Long parseFemale30to39(String text) {
+        return Long.parseLong(text.substring(4305, 4315));
     }
 
-    public long getTotalMalePopulation(String unparsedText) {
-        return parseText(3864, 4135, unparsedText);
+    public long parseTotalMalePopulation(String text) {
+        return Long.parseLong(text.substring(3864, 4135));
     }
 
-    public long getTotalFemalePopulation(String unparsedText) {
-        return parseText(4143, 4414, unparsedText);
-    }
-
-    private long parseText(int start, int end, String unparsedText) {
-        long result = 0L;
-        for (int i = start; i < end; i += 9) {
-            Long reading = Long.parseLong(unparsedText.substring(i, i + 9));
-            result += reading;
-        }
-
-        return result;
+    public long parseTotalFemalePopulation(String text) {
+        return Long.parseLong(text.substring(4143, 4414);
     }
 }
