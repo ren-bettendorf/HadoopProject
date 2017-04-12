@@ -20,7 +20,7 @@ public class RentMedianReducer extends Reducer<Text, MedianRentRecord, Text, Med
 				currentValue += entry.getValue();
 				totalRentMap.put(entry.getKey(), currentValue);
 			}
-			record.setMap(fullMap);
+			record.setMap(totalRentMap);
         }
         context.write(key, record);
     }
