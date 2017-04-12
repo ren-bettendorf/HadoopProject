@@ -15,25 +15,22 @@ import cs455.RecordUtil.NonMarriedRecord;
  */
 public class NonMarriedMapper extends Mapper<LongWritable, Text, Text, NonMarriedRecord> {
 
-    	@Override
-    	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+	@Override
+	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
-        	String unparsedText = value.toString();
+		String unparsedText = value.toString();
 		String summary = unparsedText.substring(10,13);
 
 		if(summary.equals("100")) {
 			String state = unparsedText.substring(8,10);
-			Long logicalRecordPart = Long.parseLong(unparsedText.substring(24,28));
-			Long totalParts = Long.parseLong(unparsedText.substring(28,32));
 
 			NonMarriedRecord record = new NonMarriedRecord();
 
-			//if(logicalRecordPart.equals(totalParts)) {
-				record.setNonMarriedMale(getNonMarriedMale(unparsedText));
-				record.setNonMarriedFemale(getNonMarriedFemale(unparsedText));
-				record.setPopulation(getPopulation(unparsedText));
-				context.write(new Text(state), record);
-			//}
+			record.setNonMarriedMale(getNonMarriedMale(unparsedText));
+			record.setNonMarriedFemale(getNonMarriedFemale(unparsedText));
+			record.setPopulation(getPopulation(unparsedText));
+			context.write(new Text(state), record);
+			
 		}
 	}
 

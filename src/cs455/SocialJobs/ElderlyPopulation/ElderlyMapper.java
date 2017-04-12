@@ -18,16 +18,10 @@ public class ElderlyMapper extends Mapper<LongWritable, Text, Text, ElderlyRecor
         if (summary.equals("100")) {
 
             String state = text.substring(8,10);
-            Long logicalRecordPart = Long.parseLong(text.substring(24,28));
-            Long totalParts = Long.parseLong(text.substring(28,32));
-
-		
-            if (!logicalRecordPart.equals(totalParts)) {
-				ElderlyRecord record = new ElderlyRecord();
-				record.setTotalPopulation(getPopulation(text));
-				record.setElderlyPopulation(getElderlyPopulation(text));
-                context.write(new Text(state), record);
-            }
+			ElderlyRecord record = new ElderlyRecord();
+			record.setTotalPopulation(getPopulation(text));
+			record.setElderlyPopulation(getElderlyPopulation(text));
+			context.write(new Text(state), record);
         }
     }
 
