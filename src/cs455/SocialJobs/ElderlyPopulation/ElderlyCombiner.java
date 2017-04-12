@@ -18,7 +18,9 @@ public class ElderlyCombiner extends Reducer<Text, ElderlyRecord, Text, ElderlyR
             elderlyPopulation += val.getElderlyPopulation();
         }
 
-        ElderlyRecord record = new ElderlyRecord(elderlyPopulation, totalPopulation);
+        ElderlyRecord record = new ElderlyRecord();
+		record.setTotalPopulation(getPopulation(totalPopulation);
+		record.setElderlyPopulation(elderlyPopulation);
         context.write(key, record);
     }
 }
