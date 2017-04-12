@@ -20,28 +20,22 @@ public class RentMedianMapper extends Mapper<LongWritable, Text, Text, MedianRen
         if (summaryLevel.equals("100")) {
 
             String state = text.substring(8,10);
-            Long logicalRecordPart = Long.parseLong(text.substring(24,28));
-            Long totalParts = Long.parseLong(text.substring(28,32));
-
             MedianRentRecord record = new MedianRentRecord();
 
-            if (logicalRecordPart.equals(totalParts)) {
-                record.setMap(getRentValues(record, text));
-                context.write(new Text(state), record);
-            }
+			record.setMap(getRentValues(record, text));
+			context.write(new Text(state), record);
         }
     }
 
-    private Map<String, Long> getRentValues(MedianRentRecord record, String unparsedText) {
-        Map<String, Long> stringLongMap = new LinkedHashMap<>();
+    private Map<String, Long> getRentValues(MedianRentRecord record, String text) {
+        Map<String, Long> rentMap = new LinkedHashMap<>();
 
         int count = 0;
-        for (int i = 3450; i < 3586; i += 9) {
-            long number = Long.parseLong(unparsedText.substring(i, i + 9));
-            stringLongMap.put(record.getRentList().get(count), number);
+        for (int index = 3450; index < 3586; index += 9) {
+            rentMap.put(record.getRentList().get(count), Long.parseLong(text.substring(index, index + 9)));
             count++;
         }
 
-        return stringLongMap;
+        return rentMap;
     }
 }

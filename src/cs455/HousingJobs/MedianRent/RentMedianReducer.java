@@ -14,19 +14,14 @@ public class RentMedianReducer extends Reducer<Text, MedianRentRecord, Text, Med
       	MedianRentRecord record = new MedianRentRecord();
 
         for (MedianRentRecord val : values) {
-            combineMap(record, val.getMap());
+			Map<String, Long> totalRentMap = record.getMap();
+			for (Map.Entry<String, Long> entry : val.getMap().entrySet()) {
+				long currentValue = totalRentMap.get(entry.getKey());
+				currentValue += entry.getValue();
+				totalRentMap.put(entry.getKey(), currentValue);
+			}
+			record.setMap(fullMap);
         }
         context.write(key, record);
-    }
-
-    private void combineMap(MedianRentRecord record, Map<String, Long> map) {
-        Map<String, Long> fullMap = record.getMap();
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
-            long value = fullMap.get(entry.getKey());
-            value += entry.getValue();
-            fullMap.put(entry.getKey(), value);
-        }
-
-        record.setMap(fullMap);
     }
 }
