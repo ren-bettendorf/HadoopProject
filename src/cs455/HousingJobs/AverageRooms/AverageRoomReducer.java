@@ -35,7 +35,7 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
         long totalRooms = 0;
         for (int room = 0; room < roomCounts.length; room++) {
             totalHouses += roomCounts[room];
-            for (int count = 0; count < roomCounts[i]; count++) {
+            for (int count = 0; count < roomCounts[room]; count++) {
                 totalRooms += room + 1;
             }
         }

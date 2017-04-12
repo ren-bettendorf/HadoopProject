@@ -21,7 +21,7 @@ public class AverageRoomCombiner  extends Reducer<Text, AverageRoomRecord, Text,
 			for (int i = 0; i < record.getNumberRooms(); i++) {
 				numberRooms[i] += val.getRoomCounts()[i];
 			}
-			record.setRoomCounts(roomCounts);
+			record.setRoomCounts(numberRooms);
         }
 
         context.write(key, record);
