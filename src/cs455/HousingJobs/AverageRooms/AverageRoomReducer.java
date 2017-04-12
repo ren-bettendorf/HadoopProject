@@ -18,7 +18,8 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
     @Override
     protected void reduce(Text key, Iterable<AverageRoomRecord> values, Context context)  throws IOException, InterruptedException {
         List<Long> averages = new ArrayList<Long>();
-
+		
+		// Computes the Average Room size then adds to a map to find which is the 95th percentile
         for (AverageRoomRecord val : values) {
             averages.add(computeAverageRoom(val.getRoomCounts()));
         }
@@ -30,6 +31,7 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
         context.write(new Text("95th Percentile"), new Text(percent + " rooms"));
     }
 
+	// Computes the Average Room Size
     private long computeAverageRoom(long[] roomCounts) {
         long totalHouses = 0;
         long totalRooms = 0;
@@ -40,6 +42,7 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
         return totalRooms / totalHouses;
     }
 
+	// Computes the 95th percentile and returns the Long value
     private long find95thPercentile(List<Long> averages) {
         Collections.sort(averages);
         int index =(int) 0.95*averages.size();

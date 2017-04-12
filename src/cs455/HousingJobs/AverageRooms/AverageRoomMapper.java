@@ -26,6 +26,7 @@ public class AverageRoomMapper  extends Mapper<LongWritable, Text, Text, Average
         }
     }
 
+	// Gathers information from the text file
     private long[] getRoomCounts(AverageRoomRecord record, String text) {
         long[] roomSizes = new long[record.getNumberRooms()];
 

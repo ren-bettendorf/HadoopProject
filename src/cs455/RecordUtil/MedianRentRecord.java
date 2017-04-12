@@ -57,14 +57,14 @@ public class MedianRentRecord extends Record {
             total += value;
         }
 
-        long median = total / 2;
+        long medianValue = total / 2;
         long sum = 0;
-
+		// Attempt to pass median value. If it doesn't then last value in RENT_LIST is returned
         for (Map.Entry<String, Long> entry : rentMap.entrySet()) {
-            if (sum + entry.getValue() >=  median) {
+			sum += entry.getValue();
+            if (sum >=  medianValue) {
                 return entry.getKey();
             }
-            sum += entry.getValue();
         }
 
         return RENT_LIST.get(RENT_LIST.size() - 1);

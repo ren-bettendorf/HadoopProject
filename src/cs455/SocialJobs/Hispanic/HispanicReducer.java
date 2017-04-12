@@ -22,27 +22,37 @@ public class HispanicReducer extends Reducer<Text, HispanicRecord, Text, Hispani
         long totalMalePopulation = 0;
 
         for (HispanicRecord val : values) {
+			// Compute male values
             male0to18 += val.getMale0to18();
             male19to29 += val.getMale19to29();
             male30to39 += val.getMale30to39();
 
+			// Compute female values
             female0to18 += val.getFemale0to18();
             female19to29 += val.getFemale19to29();
             female30to39 += val.getFemale30to39();
 
+			// Compute total values
             totalFemalePopulation += val.getTotalFemalePopulation();
             totalMalePopulation += val.getTotalMalePopulation();
         }
 
         HispanicRecord record = new HispanicRecord();
+		
+		// Set all male values
         record.setMale0to18(male0to18);
-        record.setFemale0to18(female0to18);
         record.setMale19to29(male19to29);
-        record.setFemale19to29(female19to29);
         record.setMale30to39(male30to39);
+		
+		// Set all female values
+        record.setFemale0to18(female0to18);
+        record.setFemale19to29(female19to29);
         record.setFemale30to39(female30to39);
-        record.setTotalFemalePopulation(totalFemalePopulation);
+		
+		// Set all total values
         record.setTotalMalePopulation(totalMalePopulation);
+        record.setTotalFemalePopulation(totalFemalePopulation);
+		
         context.write(key, record);
     }
 }

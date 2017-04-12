@@ -27,6 +27,7 @@ public class RentMedianMapper extends Mapper<LongWritable, Text, Text, MedianRen
         }
     }
 
+	// Gathers information from the text file
     private Map<String, Long> getRentValues(MedianRentRecord record, String text) {
         Map<String, Long> rentMap = new LinkedHashMap<>();
 

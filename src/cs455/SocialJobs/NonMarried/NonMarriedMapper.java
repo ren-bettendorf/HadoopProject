@@ -10,25 +10,22 @@ import java.util.StringTokenizer;
 
 import cs455.RecordUtil.NonMarriedRecord;
 
-/**
- * Mapper: Reads line by line, split them into words. Emit <word, 1> pairs.
- */
 public class NonMarriedMapper extends Mapper<LongWritable, Text, Text, NonMarriedRecord> {
 
 	@Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
-		String unparsedText = value.toString();
-		String summary = unparsedText.substring(10,13);
+		String text = value.toString();
+		String summary = text.substring(10,13);
 
 		if(summary.equals("100")) {
-			String state = unparsedText.substring(8,10);
+			String state = text.substring(8,10);
 
 			NonMarriedRecord record = new NonMarriedRecord();
 
-			record.setNonMarriedMale(getNonMarriedMale(unparsedText));
-			record.setNonMarriedFemale(getNonMarriedFemale(unparsedText));
-			record.setPopulation(getPopulation(unparsedText));
+			record.setNonMarriedMale(getNonMarriedMale(text));
+			record.setNonMarriedFemale(getNonMarriedFemale(text));
+			record.setPopulation(getPopulation(text));
 			context.write(new Text(state), record);
 			
 		}

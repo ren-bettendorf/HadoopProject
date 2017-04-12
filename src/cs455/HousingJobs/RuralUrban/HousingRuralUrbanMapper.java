@@ -10,9 +10,6 @@ import java.util.StringTokenizer;
 
 import cs455.RecordUtil.HousingRecord;
 
-/**
- * Mapper: Reads line by line, split them into words. Emit <word, 1> pairs.
- */
 public class HousingRuralUrbanMapper extends Mapper<LongWritable, Text, Text, HousingRecord> {
 
 	@Override

@@ -26,6 +26,7 @@ public class HouseMedianValueMapper extends Mapper<LongWritable, Text, Text, Med
         }
     }
 
+	// Gathers information from the text file
     private Map<String, Long> getHousingValues(MedianValueRecord record, String text) {
         Map<String, Long> houseValueMap = new LinkedHashMap<String, Long>();
 
