@@ -12,8 +12,8 @@ public class ElderlyRecord implements Writable {
     private long elderlyPopulation = 0;
 
     public ElderlyRecord(long elderlyPopulation, long totalPopulation) {
-		setTotalPopulationPercentage(totalPopulation);
-		setElderlyPopulationPercentage(elderlyPopulation);
+		setTotalPopulation(totalPopulation);
+		setElderlyPopulation(elderlyPopulation);
     }
 
     public void setTotalPopulation(long totalPopulation) {
@@ -40,8 +40,8 @@ public class ElderlyRecord implements Writable {
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-        this.totalPopulationPercentage = dataInput.readLong();
-        this.elderlyPopulationPercentage = dataInput.readLong();
+        this.totalPopulation = dataInput.readLong();
+        this.elderlyPopulation = dataInput.readLong();
     }
 
 }
