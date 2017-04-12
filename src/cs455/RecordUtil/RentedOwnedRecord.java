@@ -49,11 +49,11 @@ public class RentedOwnedRecord implements Writable {
         double ownerPercentage = getOwned() / totalHousing * 100;
         double renterPercentage = getRented() / totalHousing * 100;
         return String.format("Total: %s\nOwned: %s %s\tRented: %s %s",
-							getOwned() + getRented(),
-							getOwned(),
-							ownerPercentage,
-							getRented(),
-							renterPercentage);
+							owned + rented,
+							owned,
+							formatDouble(ownerPercentage),
+							rented,
+							formatDouble(renterPercentage));
     }
 
 }

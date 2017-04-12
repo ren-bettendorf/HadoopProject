@@ -115,17 +115,7 @@ public class HispanicRecord implements Writable {
     }
 
     private String getString() {
-        /*if (getFemale0to18() == 0 ||
-                getFemale19to29() == 0 ||
-                getFemale30to39() == 0 ||
-                getMale30to39() == 0 ||
-                getMale19to29() == 0 ||
-                getMale0to18() == 0 ||
-                totalMalePopulation == 0 ||
-                totalFemalePopulation == 0) {
-            return "";
-        }*/
-
+        
         double maleBelow18Percentage = getMale0to18() / (double) totalMalePopulation * 100;
         double male19to29Percentage = getMale19to29() / (double)totalMalePopulation * 100;
         double male30to39Percentage = getMale30to39() / (double)totalMalePopulation * 100;
@@ -135,12 +125,12 @@ public class HispanicRecord implements Writable {
         double female30to39Percentage = getFemale30to39() /(double) totalFemalePopulation * 100;
 
         return String.format("Total Male: %s %s %s\tTotal Female: %s %s %s",
-							maleBelow18Percentage,
-							male19to29Percentage,
-							male30to39Percentage,
-							maleBelow18Percentage,
-							femaleBelow18Percentage,
-							female19to29Percentage,
-							female30to39Percentage);
+							formatDouble(maleBelow18Percentage),
+							formatDouble(male19to29Percentage),
+							formatDouble(male30to39Percentage),
+							formatDouble(maleBelow18Percentage),
+							formatDouble(femaleBelow18Percentage),
+							formatDouble(female19to29Percentage),
+							formatDouble(female30to39Percentage));
     }
 }

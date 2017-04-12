@@ -43,9 +43,9 @@ public class NonMarriedRecord extends Record {
 		}
 		return String.format("Non-Married Male: %s %s\tNon-Married Female: %s %s", 
 							male, 
-							male/(population*1.0), 
+							formatDouble(male/(population*1.0)), 
 							female, 
-							female/(population*1.0));
+							formatDouble(female/(population*1.0)));
 	}
 
 	@Override
