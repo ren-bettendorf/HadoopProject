@@ -17,8 +17,6 @@ public class NonMarriedReducer extends Reducer<Text, NonMarriedRecord, Text, Non
 		long male = 0;
 		long female = 0;
 		long population = 0;
-		long totalParts = 0;
-		long logicalRecordPart = 0;
 
 		for(NonMarriedRecord val : values){
 			male += val.getNonMarriedMale();
