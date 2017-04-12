@@ -9,8 +9,7 @@ import cs455.RecordUtil.HispanicRecord;
 
 public class HispanicReducer extends Reducer<Text, HispanicRecord, Text, HispanicRecord> {
     @Override
-    protected void reduce(Text key, Iterable<HispanicRecord> values, Context context)
-            throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<HispanicRecord> values, Context context) throws IOException, InterruptedException {
         long maleHispanic0to18 = 0;
         long maleHispanic19to29 = 0;
         long maleHispanic30to39 = 0;
