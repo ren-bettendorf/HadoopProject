@@ -10,39 +10,39 @@ import cs455.RecordUtil.HispanicRecord;
 public class HispanicReducer extends Reducer<Text, HispanicRecord, Text, HispanicRecord> {
     @Override
     protected void reduce(Text key, Iterable<HispanicRecord> values, Context context) throws IOException, InterruptedException {
-        long maleHispanic0to18 = 0;
-        long maleHispanic19to29 = 0;
-        long maleHispanic30to39 = 0;
+        long male0to18 = 0;
+        long male19to29 = 0;
+        long male30to39 = 0;
 
-        long femaleHispanic0to18 = 0;
-        long femaleHispanic19to29 = 0;
-        long femaleHispanic30to39 = 0;
+        long female0to18 = 0;
+        long female19to29 = 0;
+        long female30to39 = 0;
 
         long totalFemalePopulation = 0;
         long totalMalePopulation = 0;
 
         for (HispanicRecord val : values) {
-            maleHispanic0to18 += val.getMaleHispanic0to18();
-            maleHispanic19to29 += val.getMaleHispanic19to29();
-            maleHispanic30to39 += val.getMaleHispanic30to39();
+            male0to18 += val.getMale0to18();
+            male19to29 += val.getMale19to29();
+            male30to39 += val.getMale30to39();
 
-            femaleHispanic0to18 += val.getFemaleHispanic0to18();
-            femaleHispanic19to29 += val.getFemaleHispanic19to29();
-            femaleHispanic30to39 += val.getFemaleHispanic30to39();
+            female0to18 += val.getFemale0to18();
+            female19to29 += val.getFemale19to29();
+            female30to39 += val.getFemale30to39();
 
-            totalFemalePopulation += val.getTotalFemaleHispanicPopulation();
-            totalMalePopulation += val.getTotalMaleHispanicPopulation();
+            totalFemalePopulation += val.getTotalFemalePopulation();
+            totalMalePopulation += val.getTotalMalePopulation();
         }
 
         HispanicRecord marriageRecord = new HispanicRecord();
-        marriageRecord.setMaleHispanic0to18(maleHispanic0to18);
-        marriageRecord.setFemaleHispanic0to18(femaleHispanic0to18);
-        marriageRecord.setMaleHispanic19to29(maleHispanic19to29);
-        marriageRecord.setFemaleHispanic19to29(femaleHispanic19to29);
-        marriageRecord.setMaleHispanic30to39(maleHispanic30to39);
-        marriageRecord.setFemaleHispanic30to39(femaleHispanic30to39);
-        marriageRecord.setTotalFemaleHispanicPopulation(totalFemalePopulation);
-        marriageRecord.setTotalMaleHispanicPopulation(totalMalePopulation);
+        marriageRecord.setMale0to18(male0to18);
+        marriageRecord.setFemale0to18(female0to18);
+        marriageRecord.setMale19to29(male19to29);
+        marriageRecord.setFemale19to29(female19to29);
+        marriageRecord.setMale30to39(male30to39);
+        marriageRecord.setFemale30to39(female30to39);
+        marriageRecord.setTotalFemalePopulation(totalFemalePopulation);
+        marriageRecord.setTotalMalePopulation(totalMalePopulation);
         context.write(key, marriageRecord);
     }
 }
