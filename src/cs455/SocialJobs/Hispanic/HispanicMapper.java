@@ -78,6 +78,6 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
 		for(int index = start; index < end; index += 9) {
 			total += Long.parseLong(text.substring(index, index + 9));
 		}
-		return total
+		return total;
 	}
 }
