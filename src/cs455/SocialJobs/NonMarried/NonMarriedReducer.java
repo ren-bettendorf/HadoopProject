@@ -24,8 +24,6 @@ public class NonMarriedReducer extends Reducer<Text, NonMarriedRecord, Text, Non
 			male += val.getNonMarriedMale();
 			female += val.getNonMarriedFemale();
 			population += val.getPopulation();
-			totalParts = val.getTotalParts();
-			logicalRecordPart = val.getLogicalRecordPart();
 		}
 		NonMarriedRecord record = new NonMarriedRecord();
 		record.setNonMarriedMale(male);
