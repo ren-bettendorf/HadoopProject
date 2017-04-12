@@ -14,19 +14,14 @@ public class HouseMedianValueReducer  extends Reducer<Text, MedianValueRecord, T
         MedianValueRecord record = new MedianValueRecord();
 
         for (MedianValueRecord val : values) {
-            combineMap(record, val.getMap());
+            Map<String, Long> totalHouseMap = record.getMap();
+			for (Map.Entry<String, Long> entry : val.getMap().entrySet()) {
+				long value = totalHouseMap.get(entry.getKey());
+				value += entry.getValue();
+				totalHouseMap.put(entry.getKey(), value);
+			}
+			record.setMap(totalHouseMap);
         }
         context.write(key, record);
-    }
-
-    private void combineMap(MedianValueRecord record, Map<String, Long> map) {
-        Map<String, Long> fullMap = record.getMap();
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
-            long value = fullMap.get(entry.getKey());
-            value += entry.getValue();
-            fullMap.put(entry.getKey(), value);
-        }
-
-        record.setMap(fullMap);
     }
 }
