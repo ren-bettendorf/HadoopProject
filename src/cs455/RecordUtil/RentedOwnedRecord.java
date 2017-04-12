@@ -45,19 +45,15 @@ public class RentedOwnedRecord implements Writable {
 
     @Override
     public String toString() {
-        return getTenureString();
-    }
-
-    private String getTenureString() {
         double totalHousing = getOwned() + getRented();
         double ownerPercentage = getOwned() / totalHousing * 100;
         double renterPercentage = getRented() / totalHousing * 100;
         return String.format("Total: %s\nOwned: %s %s\tRented: %s %s",
-               getOwned() + getRented(),
-                getOwned(),
-                ownerPercentage,
-                getRented(),
-                renterPercentage);
+							getOwned() + getRented(),
+							getOwned(),
+							ownerPercentage,
+							getRented(),
+							renterPercentage);
     }
 
 }

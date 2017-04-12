@@ -34,9 +34,9 @@ public class MedianRentRecord implements Writable {
 
     public MedianRentRecord() {
         this.map = new LinkedHashMap<String, Long>();
-	for (String priceRange: RENT_LIST) {
-		map.put(priceRange, 0L);
-	}
+		for (String priceRange: RENT_LIST) {
+			map.put(priceRange, 0L);
+		}
     }
 	public List<String> getRentList() {
 		return RENT_LIST;
@@ -58,13 +58,13 @@ public class MedianRentRecord implements Writable {
         }
 
         long median = total / 2;
-        long result = 0;
+        long sum = 0;
 
         for (Map.Entry<String, Long> entry : map.entrySet()) {
-            if (result + entry.getValue() >=  median) {
+            if (sum + entry.getValue() >=  median) {
                 return entry.getKey();
             }
-            result += entry.getValue();
+            sum += entry.getValue();
         }
 
         return RENT_LIST.get(RENT_LIST.size() - 1);

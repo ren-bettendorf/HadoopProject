@@ -33,12 +33,12 @@ public class MedianValueRecord implements Writable {
             "400k - 500k",
             "500k >");
 
-    private Map<String, Long> map;
+    private Map<String, Long> rentMap;
 
     public MedianValueRecord() {
-        map = new LinkedHashMap<>();
+        rentMap = new LinkedHashMap<>();
         for (String string : VALUE_LIST) {
-            map.put(string, 0L);
+            rentMap.put(string, 0L);
         }
     }
 	public List<String> getValueList() {
@@ -47,30 +47,26 @@ public class MedianValueRecord implements Writable {
 
 
     public Map<String, Long> getMap() {
-        return map;
+        return rentMap;
     }
 
-    public void setMap(Map<String, Long> map) {
-        this.map = map;
+    public void setMap(Map<String, Long> rentMap) {
+        this.rentMap = rentMap;
     }
 
     @Override
     public String toString() {
-        return getHousingString();
-    }
-
-    private String getHousingString() {
         long total = 0;
-        for (Long value : map.values()) {
+        for (Long value : rentMap.values()) {
             total += value;
         }
 
         long median = total / 2;
-        long result = 0;
+        long sum = 0;
 
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
-            result += entry.getValue();
-            if (result >= median) {
+        for (Map.Entry<String, Long> entry : rentMap.entrySet()) {
+            sum += entry.getValue();
+            if (sum >= median) {
                 return entry.getKey();
             }
         }
@@ -80,15 +76,15 @@ public class MedianValueRecord implements Writable {
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-        for (Long value : map.values()) {
+        for (Long value : rentMap.values()) {
             dataOutput.writeLong(value);
         }
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-        for (String string : map.keySet()) {
-            map.put(string, dataInput.readLong());
+        for (String string : rentMap.keySet()) {
+            rentMap.put(string, dataInput.readLong());
         }
     }
 }

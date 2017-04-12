@@ -31,8 +31,6 @@ public class NonMarriedReducer extends Reducer<Text, NonMarriedRecord, Text, Non
 		record.setNonMarriedMale(male);
 		record.setNonMarriedFemale(female);
 		record.setPopulation(population);
-		record.setLogicalRecordPart(logicalRecordPart);
-		record.setTotalParts(totalParts);
 
 		context.write(key, record);
 	}	

@@ -32,7 +32,9 @@ public class HousingRecord extends Record {
 		if(getRural() == 0 || getUrban() == 0) {
 			return "";
 		}
-		return "Rural: " +  rural + "\tUrban: " + urban;
+		return String.format("Rural: %s\tUrban: %s",
+							rural,
+							urban);
 	}
 
 	@Override

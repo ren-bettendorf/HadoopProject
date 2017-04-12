@@ -16,7 +16,7 @@ public class AverageRoomRecord implements Writable {
         roomCounts = new long[ROOM_SIZE];
     }
     public int getNumberRooms() {
-	return ROOM_SIZE;
+		return ROOM_SIZE;
 	}
     public long[] getRoomCounts() {
         return roomCounts;
