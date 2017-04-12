@@ -18,11 +18,11 @@ public class HousingRuralUrbanMapper extends Mapper<LongWritable, Text, Text, Ho
 	@Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
-		String unparsedText = value.toString();
-		String summary = unparsedText.substring(10,13);
+		String text = value.toString();
+		String summary = text.substring(10,13);
 
 		if(summary.equals("100")) {
-			String state = unparsedText.substring(8,10);
+			String state = text.substring(8,10);
 
 			HousingRecord housingRecord = new HousingRecord();
 

@@ -17,7 +17,7 @@ public class Record implements Writable {
 	@Override
 	public void readFields(DataInput input) throws IOException { }
 	
-	private double formatDouble(double input) {
+	private String formatDouble(double input) {
 		DecimalFormat decimalFormatter = new DecimalFormat("#.00");
 		return decimalFormatter.format(input);
 	}
