@@ -34,15 +34,15 @@ public class HispanicReducer extends Reducer<Text, HispanicRecord, Text, Hispani
             totalMalePopulation += val.getTotalMalePopulation();
         }
 
-        HispanicRecord marriageRecord = new HispanicRecord();
-        marriageRecord.setMale0to18(male0to18);
-        marriageRecord.setFemale0to18(female0to18);
-        marriageRecord.setMale19to29(male19to29);
-        marriageRecord.setFemale19to29(female19to29);
-        marriageRecord.setMale30to39(male30to39);
-        marriageRecord.setFemale30to39(female30to39);
-        marriageRecord.setTotalFemalePopulation(totalFemalePopulation);
-        marriageRecord.setTotalMalePopulation(totalMalePopulation);
-        context.write(key, marriageRecord);
+        HispanicRecord record = new HispanicRecord();
+        record.setMale0to18(male0to18);
+        record.setFemale0to18(female0to18);
+        record.setMale19to29(male19to29);
+        recordecord.setFemale19to29(female19to29);
+        recordecord.setMale30to39(male30to39);
+        recordecord.setFemale30to39(female30to39);
+        recordecord.setTotalFemalePopulation(totalFemalePopulation);
+        recordecord.setTotalMalePopulation(totalMalePopulation);
+        context.write(key, recordecord);
     }
 }
