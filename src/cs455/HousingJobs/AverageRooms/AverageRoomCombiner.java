@@ -26,8 +26,4 @@ public class AverageRoomCombiner  extends Reducer<Text, AverageRoomRecord, Text,
 
         context.write(key, record);
     }
-
-    private void combineNumberRooms(AverageRoomRecord record, long[] roomCountToUpdate) {
-        
-    }
 }

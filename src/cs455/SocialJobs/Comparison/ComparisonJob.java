@@ -15,7 +15,7 @@ public class ComparisonJob {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
-            Job job = Job.getInstance(conf, "AverageRoom");
+            Job job = Job.getInstance(conf, "ComparisonJob");
             job.setJarByClass(ComparisonJob.class);
             job.setMapperClass(ComparisonMapper.class);
             job.setCombinerClass(ComparisonReducer.class);
