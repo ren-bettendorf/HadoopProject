@@ -12,25 +12,19 @@ import cs455.RecordUtil.HousingRecord;
  * Sums up individual counts per given word. Emits <word, total count> pairs.
  */
 public class HousingRuralUrbanReducer extends Reducer<Text, HousingRecord, Text, HousingRecord> {
-    	@Override
-    	protected void reduce(Text key, Iterable<HousingRecord> values, Context context) throws IOException, InterruptedException {
-        	long rural = 0;
-        	long urban = 0;
-		long totalParts = 0;
-		long logicalRecordPart = 0;
+	@Override
+	protected void reduce(Text key, Iterable<HousingRecord> values, Context context) throws IOException, InterruptedException {
+		long rural = 0;
+		long urban = 0;
 
-        	for(HousingRecord val : values){
-            		rural += val.getRural();
+		for(HousingRecord val : values){
+			rural += val.getRural();
 			urban += val.getUrban();
-			totalParts = val.getTotalParts();
-			logicalRecordPart = val.getLogicalRecordPart();
-        	}
+		}
 		HousingRecord housingRecord = new HousingRecord();
 		housingRecord.setRural(rural);
 		housingRecord.setUrban(urban);
-		housingRecord.setLogicalRecordPart(logicalRecordPart);
-		housingRecord.setTotalParts(totalParts);
 
-        	context.write(key, housingRecord);
+		context.write(key, housingRecord);
 	}
 }

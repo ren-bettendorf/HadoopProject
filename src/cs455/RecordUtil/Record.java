@@ -1,5 +1,6 @@
 package cs455.RecordUtil;
 
+import java.text.DecimalFormat;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -15,4 +16,9 @@ public class Record implements Writable {
 
 	@Override
 	public void readFields(DataInput input) throws IOException { }
+	
+	private double formatDouble(double input) {
+		DecimalFormat decimalFormatter = new DecimalFormat("#.00");
+		return decimalFormatter.format(input);
+	}
 }
