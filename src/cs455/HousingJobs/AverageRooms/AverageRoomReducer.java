@@ -22,8 +22,6 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
         for (AverageRoomRecord val : values) {
             averages.add(computeAverageRoom(val.getRoomCounts()));
         }
-
-
         percent = find95thPercentile(averages);
     }
 
@@ -32,19 +30,19 @@ public class AverageRoomReducer extends Reducer<Text, AverageRoomRecord, Text, T
         context.write(new Text("95th Percentile"), new Text(percent + " rooms"));
     }
 
-    public long computeAverageRoom(long[] roomCounts) {
-        long totalHouses = 0L;
-        long totalRooms = 0L;
-        for (int room = 0; i < roomCounts.length; room++) {
-            totalHouses += roomCounts[i];
-            for (int count = 1; count <= roomCounts[i]; count++) {
-                totalRooms += room;
+    private long computeAverageRoom(long[] roomCounts) {
+        long totalHouses = 0;
+        long totalRooms = 0;
+        for (int room = 0; room < roomCounts.length; room++) {
+            totalHouses += roomCounts[room];
+            for (int count = 0; count < roomCounts[i]; count++) {
+                totalRooms += room + 1;
             }
         }
         return totalRooms / totalHouses;
     }
 
-    public long find95thPercentile(List<Long> averages) {
+    private long find95thPercentile(List<Long> averages) {
         Collections.sort(averages);
         int index =(int) 0.95*averages.size();
 		return averages.get(index);
