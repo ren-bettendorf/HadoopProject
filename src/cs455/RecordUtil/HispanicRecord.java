@@ -111,11 +111,6 @@ public class HispanicRecord extends Record {
 
     @Override
     public String toString() {
-        return getString();
-    }
-
-    private String getString() {
-        
         double maleBelow18Percentage = getMale0to18() / (double) totalMalePopulation * 100;
         double male19to29Percentage = getMale19to29() / (double)totalMalePopulation * 100;
         double male30to39Percentage = getMale30to39() / (double)totalMalePopulation * 100;

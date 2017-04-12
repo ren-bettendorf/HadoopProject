@@ -19,7 +19,6 @@ public class ComparisonJob {
             job.setJarByClass(ComparisonJob.class);
             job.setMapperClass(ComparisonMapper.class);
             job.setCombinerClass(ComparisonReducer.class);
-            job.setNumReduceTasks(1);
             job.setReducerClass(ComparisonReducer.class);
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(ComparisonRecord.class);
