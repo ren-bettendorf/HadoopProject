@@ -41,7 +41,7 @@ public class NonMarriedRecord extends Record {
 		if(getNonMarriedMale() == 0 || getNonMarriedFemale() == 0 || getPopulation() == 0 ) {
 			return "";
 		}
-		return "Non-Married Male: " + male + " " +  male/population + "\tNon-Married Female: " + female + " " + female/population;
+		return String.format("Non-Married Male: %s %s\tNon-Married Female: %s %s", male, male/(double)population*100, female, female/(double)population*100);
 	}
 
 	@Override
