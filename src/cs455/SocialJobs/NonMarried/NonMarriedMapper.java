@@ -28,12 +28,12 @@ public class NonMarriedMapper extends Mapper<LongWritable, Text, Text, NonMarrie
 
 			NonMarriedRecord record = new NonMarriedRecord();
 
-			if(logicalRecordPart.equals(totalParts)) {
+			//if(logicalRecordPart.equals(totalParts)) {
 				record.setNonMarriedMale(getNonMarriedMale(unparsedText));
 				record.setNonMarriedFemale(getNonMarriedFemale(unparsedText));
 				record.setPopulation(getPopulation(unparsedText));
 				context.write(new Text(state), record);
-			}
+			//}
 		}
 	}
 
