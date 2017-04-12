@@ -30,12 +30,12 @@ public class MedianRentRecord implements Writable {
             "750 - 999",
             "1000 >"));
 
-    private Map<String, Long> map;
+    private Map<String, Long> rentMap;
 
     public MedianRentRecord() {
-        this.map = new LinkedHashMap<String, Long>();
+        this.rentMap = new LinkedHashMap<String, Long>();
 		for (String priceRange: RENT_LIST) {
-			map.put(priceRange, 0L);
+			rentMap.put(priceRange, 0L);
 		}
     }
 	public List<String> getRentList() {
@@ -43,24 +43,24 @@ public class MedianRentRecord implements Writable {
 	}
 
     public Map<String, Long> getMap() {
-        return map;
+        return rentMap;
     }
 
-    public void setMap(Map<String, Long> map) {
-        this.map = map;
+    public void setMap(Map<String, Long> rentMap) {
+        this.rentMap = rentMap;
     }
 
     @Override
     public String toString() {
         long total = 0;
-        for (Long value : map.values()) {
+        for (Long value : rentMap.values()) {
             total += value;
         }
 
         long median = total / 2;
         long sum = 0;
 
-        for (Map.Entry<String, Long> entry : map.entrySet()) {
+        for (rentMap.Entry<String, Long> entry : rentMap.entrySet()) {
             if (sum + entry.getValue() >=  median) {
                 return entry.getKey();
             }
@@ -72,15 +72,15 @@ public class MedianRentRecord implements Writable {
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-        for (Long value : map.values()) {
+        for (Long value : rentMap.values()) {
             dataOutput.writeLong(value);
         }
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-        for (String priceRange : map.keySet()) {
-            map.put(priceRange, dataInput.readLong());
+        for (String priceRange : rentMap.keySet()) {
+            rentMap.put(priceRange, dataInput.readLong());
         }
     }
 }
