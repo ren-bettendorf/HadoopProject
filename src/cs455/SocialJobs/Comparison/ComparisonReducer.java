@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import cs455.RecordUtil.ComparisonRecord;
 
-public class ComparisonReducer extends Reducer<Text, ComparisonRecord, Text, Text> {
+public class ComparisonReducer extends Reducer<Text, ComparisonRecord, Text, ComparisonRecord> {
 
     private long percent;
 
