@@ -18,7 +18,7 @@ public class RentedOwnedReducer extends Reducer<Text, RentedOwnedRecord, Text, R
             owned += val.getOwned();
         }
 
-       RentedOwnedRecord record = new RentedOwnedRecord();
+		RentedOwnedRecord record = new RentedOwnedRecord();
         record.setOwned(owned);
         record.setRented(rented);
         context.write(key, record);

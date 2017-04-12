@@ -17,25 +17,11 @@ public class RentedOwnedMapper extends Mapper<LongWritable, Text, Text, RentedOw
 
 		if(summary.equals("100")) {
 			String state = text.substring(8,10);
-			Long logicalRecordPart = Long.parseLong(text.substring(24,28));
-			Long totalParts = Long.parseLong(text.substring(28,32));
 			RentedOwnedRecord record = new RentedOwnedRecord();
 
-			if (logicalRecordPart.equals(totalParts)) {
-				record.setRented(getRenterOccupied(text));
-                		record.setOwned(getOwnerOccupied(text));
-                		context.write(new Text(state), record);
-            		}
+			record.setRented(Long.parseLong(text.substring(1812, 1821));
+			record.setOwned(Long.parseLong(text.substring(1803, 1812)));
+			context.write(new Text(state), record);
 		}
-	}
-
-	private Long getOwnerOccupied(String unparsedText) {
-        	Long ownerOccupied = Long.parseLong(unparsedText.substring(1803, 1812));
-        	return ownerOccupied;
-	}
-
-	private Long getRenterOccupied(String unparsedText) {
-        	Long renterOccupied = Long.parseLong(unparsedText.substring(1812, 1821));
-        	return renterOccupied;
 	}
 }
