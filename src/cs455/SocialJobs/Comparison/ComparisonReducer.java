@@ -23,9 +23,10 @@ public class ComparisonReducer extends Reducer<Text, ComparisonRecord, Text, Com
         for (ComparisonRecord val : values) {
 			long totalHouses = 0;
 			long totalRooms = 0;
-			for (int room = 0; room < val.getRoomCounts().length; room++) {
-				totalHouses += val.getRoomCounts()[room];
-				for (int count = 0; count < val.getRoomCounts()[room]; count++) {
+			long[] roomCounts = val.getRoomCounts();
+			for (int room = 0; room < roomCounts.length; room++) {
+				totalHouses += roomCounts[room];
+				for (int count = 0; count < roomCounts[room]; count++) {
 					totalRooms += room + 1;
 				}	
 			}
