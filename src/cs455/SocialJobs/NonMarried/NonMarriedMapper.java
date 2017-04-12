@@ -22,11 +22,15 @@ public class NonMarriedMapper extends Mapper<LongWritable, Text, Text, NonMarrie
 			String state = text.substring(8,10);
 
 			NonMarriedRecord record = new NonMarriedRecord();
-
-			record.setNonMarriedMale(getNonMarriedMale(text));
-			record.setNonMarriedFemale(getNonMarriedFemale(text));
-			record.setPopulation(getPopulation(text));
-			context.write(new Text(state), record);
+			Long logicalRecordPart = Long.parseLong(text.substring(24,28));
+			Long totalParts = Long.parseLong(text.substring(28,32));
+			
+			if(!logicalRecordPart.equals(totalParts)) {
+				record.setNonMarriedMale(getNonMarriedMale(text));
+				record.setNonMarriedFemale(getNonMarriedFemale(text));
+				record.setPopulation(getPopulation(text));
+				context.write(new Text(state), record);
+			}
 			
 		}
 	}
