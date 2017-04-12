@@ -1,4 +1,4 @@
-package cs455.AgeJobs.Hispanic;
+package cs455.SocialJobs.Hispanic;
 
 import java.io.IOException;
 

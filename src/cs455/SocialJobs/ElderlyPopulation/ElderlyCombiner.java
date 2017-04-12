@@ -1,4 +1,4 @@
-package cs455.AgeJobs.ElderlyPopulation;
+package cs455.SocialJobs.ElderlyPopulation;
 
 import java.io.IOException;
 
@@ -9,18 +9,16 @@ import cs455.RecordUtil.ElderlyRecord;
 
 public class ElderlyCombiner extends Reducer<Text, ElderlyRecord, Text, ElderlyRecord> {
     @Override
-    protected void reduce(Text key, Iterable<ElderlyRecord> values, Context context)
-            throws IOException, InterruptedException {
-        double totalPopulation = 0.0;
-        double elderlyPopulation = 0.0;
+    protected void reduce(Text key, Iterable<ElderlyRecord> values, Context context) throws IOException, InterruptedException {
+        long totalPopulation = 0;
+        long elderlyPopulation = 0;
 
         for (ElderlyRecord val : values) {
             totalPopulation += val.getTotalPopulation();
             elderlyPopulation += val.getElderlyPopulation();
         }
 
-        ElderlyRecord record = new ElderlyRecord();
-        record.setPopulation(elderlyPopulation, totalPopulation);
+        ElderlyRecord record = new ElderlyRecord(elderlyPopulation, totalPopulation);
         context.write(key, record);
     }
 }

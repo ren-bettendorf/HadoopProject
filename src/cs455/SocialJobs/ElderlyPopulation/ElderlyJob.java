@@ -1,4 +1,4 @@
-package cs455.AgeJobs.ElderlyPopulation;
+package cs455.SocialJobs.ElderlyPopulation;
 
 import java.io.IOException;
 
@@ -17,13 +17,16 @@ public class ElderlyJob {
         try {
             Configuration conf = new Configuration();
             Job job = Job.getInstance(conf, "ElderlyPopulation");
+			
             job.setJarByClass(ElderlyJob.class);
             job.setMapperClass(ElderlyMapper.class);
             job.setCombinerClass(ElderlyCombiner.class);
             job.setReducerClass(ElderlyReducer.class);
             job.setNumReduceTasks(1);
+			
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(ElderlyRecord.class);
+			
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(DoubleWritable.class);
 

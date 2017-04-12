@@ -1,4 +1,4 @@
-package cs455.AgeJobs.ElderlyPopulation;
+package cs455.SocialJobs.ElderlyPopulation;
 
 import java.io.IOException;
 
@@ -21,23 +21,21 @@ public class ElderlyMapper extends Mapper<LongWritable, Text, Text, ElderlyRecor
             Long logicalRecordPart = Long.parseLong(text.substring(24,28));
             Long totalParts = Long.parseLong(text.substring(28,32));
 
-            ElderlyRecord record = new ElderlyRecord();
 
             if (!logicalRecordPart.equals(totalParts)) {
-                record.setPopulation(getElderlyPopulation(text),
-                        getPopulation(text));
+				ElderlyRecord record = new ElderlyRecord(getElderlyPopulation(text), getPopulation(text));
                 context.write(new Text(state), record);
             }
         }
     }
 
-    public Long getPopulation(String unparsedText) {
-        Long population = Long.parseLong(unparsedText.substring(300, 309));
+    public Long getPopulation(String text) {
+        Long population = Long.parseLong(text.substring(300, 309));
         return population;
     }
 
-    public Long getElderlyPopulation(String unparsedText) {
-        Long elderlyPopulation = Long.parseLong(unparsedText.substring(1065, 1074));
+    public Long getElderlyPopulation(String text) {
+        Long elderlyPopulation = Long.parseLong(text.substring(1065, 1074));
         return elderlyPopulation;
     }
 

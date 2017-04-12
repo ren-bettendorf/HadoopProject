@@ -8,36 +8,40 @@ import org.apache.hadoop.io.Writable;
 
 public class ElderlyRecord implements Writable {
 
-    private double totalPopulation = 0.0;
-    private double elderlyPopulation = 0.0;
+    private long totalPopulation = 0;
+    private long elderlyPopulation = 0;
 
-    public ElderlyRecord() {
-
+    public ElderlyRecord(long elderlyPopulation, long totalPopulation) {
+		setTotalPopulationPercentage(totalPopulation);
+		setElderlyPopulationPercentage(elderlyPopulation);
     }
 
-    public void setPopulation(double elderlyPopulation, double totalPopulation) {
+    public void setTotalPopulation(long totalPopulation) {
 		this.totalPopulation = totalPopulation;
-		this.elderlyPopulation = elderlyPopulation;
     }
+	
+	public void setElderlyPopulation(long elderlyPopulation) {
+		this.elderlyPopulation = elderlyPopulation;
+	}
 
-    public double getElderlyPopulation() {
+    public long getElderlyPopulation() {
         return elderlyPopulation;
     }
 
-    public double getTotalPopulation() {
+    public long getTotalPopulation() {
         return totalPopulation;
     }
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-        dataOutput.writeDouble(totalPopulation);
-        dataOutput.writeDouble(elderlyPopulation);
+        dataOutput.writeLong(totalPopulation);
+        dataOutput.writeLong(elderlyPopulation);
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-        this.totalPopulation = dataInput.readDouble();
-        this.elderlyPopulation = dataInput.readDouble();
+        this.totalPopulationPercentage = dataInput.readLong();
+        this.elderlyPopulationPercentage = dataInput.readLong();
     }
 
 }
