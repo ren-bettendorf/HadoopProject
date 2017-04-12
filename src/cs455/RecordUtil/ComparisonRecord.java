@@ -11,7 +11,7 @@ public class ComparisonRecord extends Record {
 	private long urban = 0L;
 	private long total = 0L;
     private final int ROOM_SIZE = 9;
-
+	private long averageRoom = 0L;
     private long[] roomCounts;
 
     public ComparisonRecord() {
@@ -36,6 +36,10 @@ public class ComparisonRecord extends Record {
 		return total;
 	}
 	
+	public void setAverageRoom(long averageRoom) {
+		this.averageRoom = averageRoom;
+	}
+	
 	public void setUrbanPopulation(long urban) {
 		this.urban = urban;
 	}
@@ -46,7 +50,10 @@ public class ComparisonRecord extends Record {
 	
 	@Override
 	public String toString() {
-		
+		double urbanPercentage = urban / (double)(total) * 100;
+        return String.format("%s %s",
+							formatDouble(urbanPercentage),
+							averageRoom);
 	}
 
     @Override
