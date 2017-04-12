@@ -9,18 +9,18 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import cs455.RecordUtil.AverageRoomRecord;
+import cs455.RecordUtil.ComparisonRecord;
 
-public class ComparisonReducer extends Reducer<Text, AverageRoomRecord, Text, Text> {
+public class ComparisonReducer extends Reducer<Text, ComparisonRecord, Text, Text> {
 
     private long percent;
 
     @Override
-    protected void reduce(Text key, Iterable<AverageRoomRecord> values, Context context)  throws IOException, InterruptedException {
+    protected void reduce(Text key, Iterable<ComparisonRecord> values, Context context)  throws IOException, InterruptedException {
 		long averageRoom = 0L;
 		long urban = 0L;
 		long total = 0L;
-        for (AverageRoomRecord val : values) {
+        for (ComparisonRecord val : values) {
 			long totalHouses = 0;
 			long totalRooms = 0;
 			for (int room = 0; room < roomCounts.length; room++) {
