@@ -42,34 +42,42 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
     }
 
     public Long parseMaleBelow18(String text) {
-        return Long.parseLong(text.substring(3864, 3973));
+        return parseCompleteAgeGap(text, 3864, 3973);
     }
 
     public Long parseFemaleBelow18(String text) {
-        return Long.parseLong(text.substring(4143, 4252));
+        return parseCompleteAgeGap(text, 4143, 4252);
     }
 
     public Long parseMale19to29(String text) {
-        return Long.parseLong(text.substring(3981, 4018));
+        return parseCompleteAgeGap(text, 3981, 4018);
     }
 
     public Long parseFemale19to29(String text) {
-        return Long.parseLong(text.substring(4260, 4297));
+        return parseCompleteAgeGap(text, 4260, 4297);
     }
 
     public Long parseMale30to39(String text) {
-        return Long.parseLong(text.substring(4026, 4036));
+        return parseCompleteAgeGap(text, 4026, 4036);
     }
 
     public Long parseFemale30to39(String text) {
-        return Long.parseLong(text.substring(4305, 4315));
+        return parseCompleteAgeGap(text, 4305, 4315);
     }
 
     public long parseTotalMalePopulation(String text) {
-        return Long.parseLong(text.substring(3864, 4135));
+        return parseCompleteAgeGap(text, 3864, 4135);
     }
 
     public long parseTotalFemalePopulation(String text) {
-        return Long.parseLong(text.substring(4143, 4414));
+        return parseCompleteAgeGap(text, 4143, 4414);
     }
+	
+	private Long parseCompleteAgeGap(String text, int start, int end) {
+		int total = 0;
+		for(int index = start; index < end; index += 9) {
+			total += Long.parseLong(text.substring(index, index + 9));
+		}
+		return total
+	}
 }

@@ -12,21 +12,21 @@ import cs455.RecordUtil.NonMarriedRecord;
  * Sums up individual counts per given word. Emits <word, total count> pairs.
  */
 public class NonMarriedReducer extends Reducer<Text, NonMarriedRecord, Text, NonMarriedRecord> {
-    	@Override
-    	protected void reduce(Text key, Iterable<NonMarriedRecord> values, Context context) throws IOException, InterruptedException {
-        	long male = 0;
-        	long female = 0;
+	@Override
+	protected void reduce(Text key, Iterable<NonMarriedRecord> values, Context context) throws IOException, InterruptedException {
+		long male = 0;
+		long female = 0;
 		long population = 0;
 		long totalParts = 0;
 		long logicalRecordPart = 0;
 
-        	for(NonMarriedRecord val : values){
-            		male += val.getNonMarriedMale();
+		for(NonMarriedRecord val : values){
+			male += val.getNonMarriedMale();
 			female += val.getNonMarriedFemale();
 			population += val.getPopulation();
 			totalParts = val.getTotalParts();
 			logicalRecordPart = val.getLogicalRecordPart();
-        	}
+		}
 		NonMarriedRecord record = new NonMarriedRecord();
 		record.setNonMarriedMale(male);
 		record.setNonMarriedFemale(female);
@@ -34,6 +34,6 @@ public class NonMarriedReducer extends Reducer<Text, NonMarriedRecord, Text, Non
 		record.setLogicalRecordPart(logicalRecordPart);
 		record.setTotalParts(totalParts);
 
-        	context.write(key, record);
-	}
+		context.write(key, record);
+	}	
 }
