@@ -11,9 +11,7 @@ public class ElderlyRecord implements Writable {
     private long totalPopulation = 0;
     private long elderlyPopulation = 0;
 
-    public ElderlyRecord(long elderlyPopulation, long totalPopulation) {
-		setTotalPopulation(totalPopulation);
-		setElderlyPopulation(elderlyPopulation);
+    public ElderlyRecord() {
     }
 
     public void setTotalPopulation(long totalPopulation) {
