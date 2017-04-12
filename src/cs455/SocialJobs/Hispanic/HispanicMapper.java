@@ -24,7 +24,7 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
 
             HispanicRecord record = new HispanicRecord();
 
-            //if (!logicalRecordPart.equals(totalParts)) {
+            if (!logicalRecordPart.equals(totalParts)) {
                 record.setMale0to18(parseMaleBelow18(text));
                 record.setFemale0to18(parseFemaleBelow18(text));
 
@@ -37,11 +37,11 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
                 record.setTotalMalePopulation(parseTotalMalePopulation(text));
                 record.setTotalFemalePopulation(parseTotalFemalePopulation(text));
                 context.write(new Text(state), record);
-            //}
+            }
         }
     }
 
-    public Long parseMaleBelow18(String unparsedText) {
+    public Long parseMaleBelow18(String text) {
         return Long.parseLong(text.substring(3864, 3973));
     }
 
@@ -70,6 +70,6 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
     }
 
     public long parseTotalFemalePopulation(String text) {
-        return Long.parseLong(text.substring(4143, 4414);
+        return Long.parseLong(text.substring(4143, 4414));
     }
 }
