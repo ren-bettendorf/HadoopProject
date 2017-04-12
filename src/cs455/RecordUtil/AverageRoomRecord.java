@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
 
-public class AverageRoomRecord implements Writable {
+public class AverageRoomRecord extends Record {
 
     public final int ROOM_SIZE = 9;
 

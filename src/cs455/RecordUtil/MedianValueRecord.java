@@ -10,28 +10,28 @@ import java.util.Map;
 
 import org.apache.hadoop.io.Writable;
 
-public class MedianValueRecord implements Writable {
+public class MedianValueRecord extends Record {
 
     public final List<String> VALUE_LIST = Arrays.asList("< 15k",
-            "15k - 20k",
-            "20k - 25k",
-            "25k - 30k",
-            "30k - 35k",
-            "35k - 40k",
-            "40k - 45k",
-            "45k - 50k",
-            "50k - 60k",
-            "60k - 75k",
-            "75k - 100k",
-            "100k - 125k",
-            "125k - 150k",
-            "150k - 175k",
-            "175k - 200k",
-            "200k - 250k",
-            "250k - 300k",
-            "300k - 400k",
-            "400k - 500k",
-            "500k >");
+														"15k - 20k",
+														"20k - 25k",
+														"25k - 30k",
+														"30k - 35k",
+														"35k - 40k",
+														"40k - 45k",
+														"45k - 50k",
+														"50k - 60k",
+														"60k - 75k",
+														"75k - 100k",
+														"100k - 125k",
+														"125k - 150k",
+														"150k - 175k",
+														"175k - 200k",
+														"200k - 250k",
+														"250k - 300k",
+														"300k - 400k",
+														"400k - 500k",
+														"500k >");
 
     private Map<String, Long> houseMap;
 

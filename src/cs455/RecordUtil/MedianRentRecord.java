@@ -11,24 +11,24 @@ import java.util.Map;
 
 import org.apache.hadoop.io.Writable;
 
-public class MedianRentRecord implements Writable {
+public class MedianRentRecord extends Record {
 
     public final List<String> RENT_LIST = new ArrayList<String>(Arrays.asList("< 100",
-            "100 - 150",
-            "150 - 199",
-            "200 - 249",
-            "250 - 299",
-            "300 - 349",
-            "350 - 399",
-            "400 - 449",
-            "450 - 499",
-            "500 - 549",
-            "550 - 599",
-            "600 - 649",
-            "650 - 699",
-            "700 - 749",
-            "750 - 999",
-            "1000 >"));
+																			"100 - 150",
+																			"150 - 199",
+																			"200 - 249",
+																			"250 - 299",
+																			"300 - 349",
+																			"350 - 399",
+																			"400 - 449",
+																			"450 - 499",
+																			"500 - 549",
+																			"550 - 599",
+																			"600 - 649",
+																			"650 - 699",
+																			"700 - 749",
+																			"750 - 999",
+																			"1000 >"));
 
     private Map<String, Long> rentMap;
 

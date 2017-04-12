@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
 
-public class HispanicRecord implements Writable {
+public class HispanicRecord extends Record {
     private long male0to18 = 0;
     private long male19to29 = 0;
     private long male30to39 = 0;

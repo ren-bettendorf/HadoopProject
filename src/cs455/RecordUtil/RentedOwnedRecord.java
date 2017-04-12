@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
 
-public class RentedOwnedRecord implements Writable {
+public class RentedOwnedRecord extends Record {
     private long rented = 0;
 
     private long owned = 0;

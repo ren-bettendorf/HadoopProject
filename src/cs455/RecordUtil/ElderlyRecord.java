@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
 
-public class ElderlyRecord implements Writable {
+public class ElderlyRecord extends Record {
 
     private long totalPopulation = 0;
     private long elderlyPopulation = 0;
