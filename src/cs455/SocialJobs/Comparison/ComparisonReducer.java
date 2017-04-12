@@ -29,7 +29,7 @@ public class ComparisonReducer extends Reducer<Text, ComparisonRecord, Text, Com
 					totalRooms += room + 1;
 				}	
 			}
-			averageRoom = totalRooms / totalHouses;
+			averageRoom += totalRooms / totalHouses;
 			urban += val.getUrbanPopulation();
 			total += val.getTotalPopulation();
         }
