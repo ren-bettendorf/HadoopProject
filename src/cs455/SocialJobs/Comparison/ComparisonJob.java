@@ -24,7 +24,7 @@ public class ComparisonJob {
             job.setMapOutputKeyClass(Text.class);
             job.setMapOutputValueClass(ComparisonRecord.class);
             job.setOutputKeyClass(Text.class);
-            job.setOutputValueClass(Text.class);
+            job.setOutputValueClass(ComparisonRecord.class);
 
             FileInputFormat.addInputPath(job, new Path(args[0]));
             FileOutputFormat.setOutputPath(job, new Path(args[1]));
