@@ -22,19 +22,23 @@ public class HispanicMapper extends Mapper<LongWritable, Text, Text, HispanicRec
 
             HispanicRecord record = new HispanicRecord();
 
-            
-			record.setMale0to18(parseMaleBelow18(text));
-			record.setFemale0to18(parseFemaleBelow18(text));
+            Long logicalRecordPart = Long.parseLong(text.substring(24,28));
+			Long totalParts = Long.parseLong(text.substring(28,32));
+			
+			if(!logicalRecordPart.equals(totalParts)) {
+				record.setMale0to18(parseMaleBelow18(text));
+				record.setFemale0to18(parseFemaleBelow18(text));
 
-			record.setMale19to29(parseMale19to29(text));
-			record.setFemale19to29(parseFemale19to29(text));
+				record.setMale19to29(parseMale19to29(text));
+				record.setFemale19to29(parseFemale19to29(text));
 
-			record.setMale30to39(parseMale30to39(text));
-			record.setFemale30to39(parseFemale30to39(text));
+				record.setMale30to39(parseMale30to39(text));
+				record.setFemale30to39(parseFemale30to39(text));
 
-			record.setTotalMalePopulation(parseTotalMalePopulation(text));
-			record.setTotalFemalePopulation(parseTotalFemalePopulation(text));
-			context.write(new Text(state), record);
+				record.setTotalMalePopulation(parseTotalMalePopulation(text));
+				record.setTotalFemalePopulation(parseTotalFemalePopulation(text));
+				context.write(new Text(state), record);
+			}
         }
     }
 

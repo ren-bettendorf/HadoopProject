@@ -18,14 +18,19 @@ public class AverageRoomMapper  extends Mapper<LongWritable, Text, Text, Average
         if (summary.equals("100")) {
 
             String state = text.substring(8,10);
-
+			
+			Long logicalRecordPart = Long.parseLong(text.substring(24,28));
+			Long totalParts = Long.parseLong(text.substring(28,32));
+			
             AverageRoomRecord record = new AverageRoomRecord();
-
-			record.setRoomCounts(getRoomCounts(record, text));
-			context.write(new Text(state), record);
+			if(logicalRecordPart.equals(totalParts)) {
+				record.setRoomCounts(getRoomCounts(record, text));
+				context.write(new Text(state), record);
+			}
         }
     }
 
+	// Gathers information from the text file
     private long[] getRoomCounts(AverageRoomRecord record, String text) {
         long[] roomSizes = new long[record.getNumberRooms()];
 

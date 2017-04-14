@@ -8,7 +8,7 @@ import org.apache.hadoop.io.Writable;
 
 public class AverageRoomRecord extends Record {
 
-    public final int ROOM_SIZE = 9;
+    private final int ROOM_SIZE = 9;
 
     private long[] roomCounts;
 

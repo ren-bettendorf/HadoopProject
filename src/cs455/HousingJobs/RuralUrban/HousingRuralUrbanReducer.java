@@ -7,10 +7,6 @@ import java.io.IOException;
 
 import cs455.RecordUtil.HousingRecord;
 
-/**
- * Reducer: Input to the reducer is the output from the mapper. It receives word, list<count> pairs.
- * Sums up individual counts per given word. Emits <word, total count> pairs.
- */
 public class HousingRuralUrbanReducer extends Reducer<Text, HousingRecord, Text, HousingRecord> {
 	@Override
 	protected void reduce(Text key, Iterable<HousingRecord> values, Context context) throws IOException, InterruptedException {
@@ -21,10 +17,10 @@ public class HousingRuralUrbanReducer extends Reducer<Text, HousingRecord, Text,
 			rural += val.getRural();
 			urban += val.getUrban();
 		}
-		HousingRecord housingRecord = new HousingRecord();
-		housingRecord.setRural(rural);
-		housingRecord.setUrban(urban);
+		HousingRecord record = new HousingRecord();
+		record.setRural(rural);
+		record.setUrban(urban);
 
-		context.write(key, housingRecord);
+		context.write(key, record);
 	}
 }

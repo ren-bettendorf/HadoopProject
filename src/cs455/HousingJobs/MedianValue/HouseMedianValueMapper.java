@@ -21,11 +21,17 @@ public class HouseMedianValueMapper extends Mapper<LongWritable, Text, Text, Med
 		if(summary.equals("100")) {
 			String state = text.substring(8,10);
 
-			record.setMap(getHousingValues(record, text));
-			context.write(new Text(state), record);
+			Long logicalRecordPart = Long.parseLong(text.substring(24,28));
+			Long totalParts = Long.parseLong(text.substring(28,32));
+			
+			if(logicalRecordPart.equals(totalParts)) {
+				record.setMap(getHousingValues(record, text));
+				context.write(new Text(state), record);
+			}
         }
     }
 
+	// Gathers information from the text file
     private Map<String, Long> getHousingValues(MedianValueRecord record, String text) {
         Map<String, Long> houseValueMap = new LinkedHashMap<String, Long>();
 

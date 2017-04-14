@@ -61,12 +61,12 @@ public class MedianValueRecord extends Record {
             total += value;
         }
 
-        long median = total / 2;
+        long medianValue = total / 2;
         long sum = 0;
-
+		// Attempt to pass median value. If it doesn't then last value in VALUE_LIST is returned
         for (Map.Entry<String, Long> entry : houseMap.entrySet()) {
             sum += entry.getValue();
-            if (sum >= median) {
+            if (sum >= medianValue) {
                 return entry.getKey();
             }
         }

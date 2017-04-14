@@ -13,6 +13,7 @@ public class RentMedianReducer extends Reducer<Text, MedianRentRecord, Text, Med
     protected void reduce(Text key, Iterable<MedianRentRecord> values, Context context) throws IOException, InterruptedException {
       	MedianRentRecord record = new MedianRentRecord();
 
+		// Computes the MedianRent by iterating through the RENT_LIST until the median value is reached.
         for (MedianRentRecord val : values) {
 			Map<String, Long> totalRentMap = record.getMap();
 			for (Map.Entry<String, Long> entry : val.getMap().entrySet()) {
