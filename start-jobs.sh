@@ -1,0 +1,8 @@
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.HousingJobs.RentedOwned.RentedOwnedJob /cs455/data /cs455/Q1"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.SocialJobs.NonMarried.NonMarriedJob /cs455/data /cs455/Q2"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.SocialJobs.Hispanic.HispanicJob /cs455/data /cs455/Q3"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.HousingJobs.RuralUrban.HousingRuralUrbanJob /cs455/data /cs455/Q4"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.HousingJobs.MedianValue.HouseMedianValueJob /cs455/data /cs455/Q5"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.HousingJobs.MedianRent.RentMedianJob /cs455/data /cs455/Q6"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.HousingJobs.AverageRooms.AverageRoomJob /cs455/data /cs455/Q7"
+eval "$HADOOP_HOME/bin/hadoop jar dist/censusdata.jar cs455.SocialJobs.ElderlyPopulation.ElderlyJob /cs455/data /cs455/Q8"

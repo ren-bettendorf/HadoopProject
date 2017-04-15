@@ -1,0 +1,8 @@
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q1/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q2/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q3/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q4/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q5/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q6/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q7/part-r-00000"
+eval "$HADOOP_HOME/bin/hdfs dfs -cat /cs455/Q8/part-r-00000"

@@ -45,8 +45,8 @@ public class RentedOwnedRecord extends Record {
 
     @Override
     public String toString() {
-        double ownerPercentage = owned / (rented + owned) * 100;
-        double renterPercentage = rented / (rented + owned) * 100;
+        double ownerPercentage = owned / (rented + owned*1.0)*100;
+        double renterPercentage = rented / (rented + owned*1.0)*100;
         return String.format("Total: %s\nOwned: %s %s\tRented: %s %s",
 							owned + rented,
 							owned,

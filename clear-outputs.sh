@@ -1,0 +1,8 @@
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q1"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q2"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q3"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q4"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q5"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q6"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q7"
+eval "$HADOOP_HOME/bin/hdfs dfs -rm -r /cs455/Q8"
